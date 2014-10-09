@@ -1,0 +1,16 @@
+{
+    "contents" : "# Importing raw RAND files version A.\npathDir <- getwd()\npathFolder <- file.path(pathDir,\"Data/Extract/RAND_vA\")\npathFolderSPSS <- file.path(pathFolder,\"spss\")\n\npathFile1 <- file.path(pathFolderSPSS, \"h04f1a.sav\")\npathFile1RDS <- file.path(pathFolder, \"h04f1a.Rds\")\n\npathFile2 <- file.path(pathFolderSPSS, \"h06f2b.sav\")\npathFile2RDS <- file.path(pathFolder, \"h06f2b.Rds\")\n\n#pathFile3 <- file.path(pathFolderSPSS, \"h08f2a.sav\")\n#pathFile3RDS <- file.path(pathFolder, \"h08f2a.Rds\")\n\nrequire(foreign)\n# Next three lines are run the first time on machine\n# ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)\n# ds0_1 <- data.frame(ds0_1)\n# saveRDS(object = ds0_1, file=pathFile1RDS, compress=\"xz\")\nds01 <- readRDS(pathFile1RDS)\n\nrequire(dplyr)\n\n# THis is how to select with dplyr package \n# ds <- ds01 %>%\n#   dplyr::select(HHIDPN, DEGREE, GENDER, RACE, BIRTHMO, BIRTHYR)\n# head(ds, 12)\n\n# This is how to select with base package \nds <- ds01[ 1:200 \n            ,\n          c(\"HHIDPN\", \"JF001\", \"JF002\",\"JF010\")\n          ]\n           \n\n\n# ds0_2 <- read.spss(file=pathFile2, use.value.labels=TRUE)\n# saveRDS(object = ds0_2, file=pathFile2RDS, compress=\"xz\")\n# ds02 <- readRDS(pathFile2RDS)\n\n#ds0_3 <- read.spss(file=pathFile3, use.value.labels=TRUE)\n#saveRDS(object = ds0_3, file=pathFile3RDS, compress=\"xz\")\n#ds03 <- readRDS(pathFile3RDS)",
+    "created" : 1412882270493.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2097730397",
+    "id" : "36D810EC",
+    "lastKnownWriteTime" : 1412882145,
+    "path" : "~/GitHub/SEC-HRS-Public/Scripts/Data/Import_sav.R",
+    "project_path" : "Scripts/Data/Import_sav.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}
