@@ -49,11 +49,12 @@ require(dplyr)
 # head(ds, 12)
 
 # This is how to select with base package 
-ds <- ds01[ 1:200 
-            ,
-          c("HHIDPN", "JF001", "JF002","JF010")
-          ]
-           
+
+#  old -- new -- Description
+# HHID     HOUSEHOLD IDENTIFICATION NUMBER
+# PN       RESPONDENT PERSON IDENTIFICATION NUMBER
+# JA500    DATE OF INTERVIEW - MONTH
+
 
 
 
