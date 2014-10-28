@@ -53,7 +53,35 @@ require(dplyr)
 #  old -- new -- Description
 # HHID     HOUSEHOLD IDENTIFICATION NUMBER
 # PN       RESPONDENT PERSON IDENTIFICATION NUMBER
-# JA500    DATE OF INTERVIEW - MONTH
+# HHIDP    Household ID = Person Number: Numeric
+# BIRTHMO  Birthdate: Month 
+# BIRTHYR  Birthdate: Year
+# BIRTHYD  Max different between Tracker and core data birth
+# BIRTHYF  Flags cases with birth year 0=No difference, 1-Difference, used tracker 2=difference used other
+# JZ023    Cohort
+# JSUBHHN  2002 Sub-Household Identifier
+# JFAMR    Family Respondent
+# JFINR    Financial Respondent
+# JIVIEWMO Beginning of Interview: Month
+# JIVIEWYR Beginning of Interview: Year
+# JNHM     Respondent in nursing home derived from core data
+# JNURSHM  Respondent in nursing home from Tracker
+# JCOUPLE  Wave household - couple
+# JPROXY   Proxy flag
+# JPN_SP   SPOUSE/PARTNER PERSON NUMBER
+# JB014 -- YRSEDUC  HIGHEST LEVEL OF EDUCATION
+# JB026   FATHER EDUCATION- HIGHEST GRADE
+# JB027   MOTHER EDUCATION- HIGHEST GRADE
+# JB028   R HISPANIC/LATINO 
+# JB033   NUMBER CHILDREN EVER
+# JB034   NUMBER OF CHILDREN LIVING
+# JB050   RELIGIOUS PREFERENCE
+# JB082   HOW OFTEN ATTEND RELIGIOUS SERV
+# JB053   IMPORTANCE OF RELIGION
+# JB054   ENGLISH USUALLY SPOKEN IN HOME
+# JB055   NEW MARRIAGE SINCE PREVIOUS WAVE
+# JB056   BETWEEN WAVE MARRIAGE START-YEAR
+#JA500    DATE OF INTERVIEW - MONTH
 
 
 
