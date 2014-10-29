@@ -20,45 +20,71 @@ require(foreign)
 # ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)
 # ds0_1 <- data.frame(ds0_1)
 # saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
-ds01 <- readRDS(pathFile1RDS)
+ds04full <- readRDS(pathFile1RDS)
 
 #Next three lines are run the first time on machine
 #ds0_2 <- read.spss(file=pathFile2, use.value.labels=TRUE)
 #ds0_2 <- data.frame(ds0_2)
 #saveRDS(object = ds0_2, file=pathFile2RDS, compress="xz")
-ds02 <- readRDS(pathFile2RDS)
+ds06full <- readRDS(pathFile2RDS)
 
 #Next three lines are run the first time on machine
 #ds0_3 <- read.spss(file=pathFile3, use.value.labels=TRUE)
 #ds0_3 <- data.frame(ds0_3)
 #saveRDS(object = ds0_3, file=pathFile3RDS, compress="xz")
-ds03 <- readRDS(pathFile3RDS)
+ds08full <- readRDS(pathFile3RDS)
 
 #Next three lines are run the first time on machine
 #ds0_4 <- read.spss(file=pathFile4, use.value.labels=TRUE)
 #ds0_4 <- data.frame(ds0_4)
 #saveRDS(object = ds0_4, file=pathFile4RDS, compress="xz")
-ds04 <- readRDS(pathFile4RDS)
+ds10full <- readRDS(pathFile4RDS)
 
 
 require(dplyr)
 
-# THis is how to select with dplyr package 
+# THis is how to select with dplyr package
 # ds <- ds01 %>%
 #   dplyr::select(HHIDPN, DEGREE, GENDER, RACE, BIRTHMO, BIRTHYR)
 # head(ds, 12)
 
-# This is how to select with base package 
+# This is how to select with base package
 
+
+# THis is how to rename with dplyr package
+# Try to find names that are easy to type, but also that can be used in
+# graphs for labels
+ds04 <- ds04full %>%
+  dplyr::select(  HHIDPN, BIRTHMO, BIRTHYR, gender=JX060_R, attend=JB082)
+head(ds04, 12)
+
+ds06 <- ds06full %>%
+  dplyr::select(  HHIDPN, BIRTHMO, BIRTHYR, gender=KX060_R, attend=KB082)
+head(ds06, 12)
+
+ds08 <- ds08full %>%
+  dplyr::select(  HHIDPN, BIRTHMO, BIRTHYR, cohort=JZ023, married=JA026,
+                  education=JB014, attend=JB082)
+head(ds08, 12)
+
+ds10 <- ds10full %>%
+  dplyr::select( HHIDPN, BIRTHMO, BIRTHYR, cohort=JZ023, married=JA026,
+                 kidsever=JB033, education=JB014, attend=JB082)
+head(ds, 12)
+
+
+dsTemp <- merge(x=ds04, y=ds06, by= c("HHIDPN","BIRTHMO","BIRTHYR", "gender"))
+ds <- plyr::rename(dsTemp, replace=c("attend.x"="attend2004", "attend.y"="attend2006"))
 #  old -- new -- Description
 #RESPONDENT DEMOGRAPHIC vARIABLES
 # HHID     HOUSEHOLD IDENTIFICATION NUMBER
 # PN       RESPONDENT PERSON IDENTIFICATION NUMBER
-# HHIDP    Household ID = Person Number: Numeric
-# BIRTHMO  Birthdate: Month 
+# HHIDPN    Household ID = Person Number: Numeric
+# BIRTHMO  Birthdate: Month
 # BIRTHYR  Birthdate: Year
 # BIRTHYD  Max different between Tracker and core data birth
-# BIRTHYF  Flags cases with birth year 0=No difference, 1-Difference, used tracker 2=difference used other
+# BIRTHYF  Flags cases with birth year 0=No difference, 1-Difference, used
+tracker 2=difference used other
 # JZ023    Cohort
 # JSUBHHN  2002 Sub-Household Identifier
 # JFAMR    Family Respondent
@@ -73,7 +99,7 @@ require(dplyr)
 # JB014 -- YRSEDUC  HIGHEST LEVEL OF EDUCATION
 # JB026   FATHER EDUCATION- HIGHEST GRADE
 # JB027   MOTHER EDUCATION- HIGHEST GRADE
-# JB028   R HISPANIC/LATINO 
+# JB028   R HISPANIC/LATINO
 # JB033   NUMBER CHILDREN EVER
 # JB034   NUMBER OF CHILDREN LIVING
 # JB050   RELIGIOUS PREFERENCE
@@ -145,11 +171,3 @@ require(dplyr)
 # JA102 COUNT OF MOVE IN/OUT
 # JA106 COUNT OF CONTACT KIDS
 # JA113 COUNT OF CHILD CHILDLAW AND GRANDCHILD
-
-#HRS 04 LB Affect Questions
-# JLB003 AFFECT- GENERALLY ENJOYS WORK
-# JLB004 AFFECT- ENJOYS WORK VERY MUCH
-# JLB005 AFFECT- MOOD SWINGS ON JOB
-# JLB006 AFFECT- WORRIED ALL THE TIME
-# JLB007 AFFECT- DEPRESSED MOST OF THE TIME
-
