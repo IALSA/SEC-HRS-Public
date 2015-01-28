@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1414992428384.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "231FE0B0",
+    "lastKnownWriteTime" : 27303364806049904,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "ds06full",
+        "contentUrl" : "content?title=ds06full&file=4bd78853ae63418e80162943c21fc1ad.htm",
+        "displayedObservations" : 1000,
+        "displayedVariables" : 100,
+        "totalObservations" : 18469,
+        "variables" : 7949
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

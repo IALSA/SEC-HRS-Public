@@ -1,0 +1,22 @@
+{
+    "contents" : "",
+    "created" : 1414546521884.000,
+    "dirty" : false,
+    "encoding" : "",
+    "folds" : "",
+    "hash" : "0",
+    "id" : "46E042EC",
+    "lastKnownWriteTime" : 12385122319794224,
+    "path" : null,
+    "project_path" : null,
+    "properties" : {
+        "caption" : "ds04",
+        "contentUrl" : "content?title=ds04&file=61a56962230b4fb994cf71a2ee5eae3e.htm",
+        "displayedObservations" : "1000",
+        "displayedVariables" : 5,
+        "totalObservations" : "20129",
+        "variables" : "41"
+    },
+    "source_on_save" : false,
+    "type" : "r_dataframe"
+}

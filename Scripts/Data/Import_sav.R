@@ -1,4 +1,4 @@
-# Importing raw RAND files version A.
+ # Importing raw RAND files version A.
 pathDir <- getwd()
 pathFolder <- file.path(pathDir,"Data/Extract/RAND_vA")
 pathFolderSPSS <- file.path(pathFolder,"spss")
@@ -55,11 +55,22 @@ require(dplyr)
 # Try to find names that are easy to type, but also that can be used in
 # graphs for labels
 ds04 <- ds04full %>%
-  dplyr::select(  HHIDPN, BIRTHMO, BIRTHYR, gender=JX060_R, attend=JB082)
+  dplyr::select(  JPNCS=JPN_CS, JPNFAM=JPN_FAM, HHID, PN, HHIDPN, BIRTHMO, BIRTHYR,BIRTHYF, Gender=JX060_R, 
+                  cohort=JZ023, age=JA019, NHM=JNHM, NURSHMT=JNURSHM, PROXY=JPROXY, IVIEWMO=JIVIEWMO, IVIEWYR=JIVIEWYR, hsplit04=JSUBHH, hsplit02=HSUBHH,
+                  Spousenum=JPN_SP, CSR04=JCSR, FAMR=JFAMR, FINR=JFINR, yrsed=JB014A, 
+                  degree=JB017M, Hispanic=JB028A, Race=JB031A, childEv=JB033, childliv=JB034, englishH=JB054, maritalstatus=JB063, newmarriage=JB055,
+                  newmarrigmth=JB056, newmarrigyr=JB057, divwid=JB058, divwidmth=JB059,
+                  divwidyr=JB060, nummarriages=JB065, marriage1yr=JB066_1, marriage1mth=JB067_1,
+                  divwid1=JB068_1, marriage1lth = JB070_1, marriage2yr=JB066_2, marriage2mth=JB067_1, divwid2=JB068_2, 
+                  marriage2lgth=JB070_2, marriage3yr=JB066_3, marriage3mth=JB067_3,
+                  divwid3=JB068_3, marriage3lgth=JB070_4, marriage4yr=JB066_4, marriage4mth=JB067_4,
+                  divwid4=JB068_4, marriage4lgth=JB070_4, religion=JB050, attendR=JB082, importanceR=JB053, assistdem=JB076,  
+                  version=JVDATE, )
 head(ds04, 12)
 
 ds06 <- ds06full %>%
-  dplyr::select(  HHIDPN, BIRTHMO, BIRTHYR, gender=KX060_R, attend=KB082)
+  dplyr::select(  HHIDPN, BIRTHMO, BIRTHYR, gender=KX060_R, yrsed=KBO14
+                  cohort=KZ023, englishH=KB054, couplesplit=KSUBHH, Spousenum=KJN_SP, attend=KB082)
 head(ds06, 12)
 
 ds08 <- ds08full %>%
@@ -75,75 +86,79 @@ head(ds, 12)
 
 dsTemp <- merge(x=ds04, y=ds06, by= c("HHIDPN","BIRTHMO","BIRTHYR", "gender"))
 ds <- plyr::rename(dsTemp, replace=c("attend.x"="attend2004", "attend.y"="attend2006"))
-#  old -- new -- Description
-#RESPONDENT DEMOGRAPHIC vARIABLES
+
+#  old   -- new --   Description
+
+#SECTION PR Preload Household
+#JPN_CS -- JPNCS -- PERSON NUMBER OF COVER SCREEN RESPONDENT
+#JPN_FAM -- JPNFAM -- 2004 FAMILY RESP PERSON NUMBER
+
+#RESPONDENT DEMOGRAPHIC vARIABLES 2004 Section B
 # HHID     HOUSEHOLD IDENTIFICATION NUMBER
 # PN       RESPONDENT PERSON IDENTIFICATION NUMBER
-# HHIDPN    Household ID = Person Number: Numeric
-# BIRTHMO  Birthdate: Month
-# BIRTHYR  Birthdate: Year
-# BIRTHYD  Max different between Tracker and core data birth
-# BIRTHYF  Flags cases with birth year 0=No difference, 1-Difference, used
-tracker 2=difference used other
-# JZ023    Cohort
-# JSUBHHN  2002 Sub-Household Identifier
-# JFAMR    Family Respondent
-# JFINR    Financial Respondent
-# JIVIEWMO Beginning of Interview: Month
-# JIVIEWYR Beginning of Interview: Year
-# JNHM     Respondent in nursing home derived from core data
-# JNURSHM  Respondent in nursing home from Tracker
-# JCOUPLE  Wave household - couple
-# JPROXY   Proxy flag
-# JPN_SP   SPOUSE/PARTNER PERSON NUMBER
-# JB014 -- YRSEDUC  HIGHEST LEVEL OF EDUCATION
-# JB026   FATHER EDUCATION- HIGHEST GRADE
-# JB027   MOTHER EDUCATION- HIGHEST GRADE
-# JB028   R HISPANIC/LATINO
-# JB033   NUMBER CHILDREN EVER
-# JB034   NUMBER OF CHILDREN LIVING
-# JB050   RELIGIOUS PREFERENCE
-# JB082   HOW OFTEN ATTEND RELIGIOUS SERV
-# JB053   IMPORTANCE OF RELIGION
-# JB054   ENGLISH USUALLY SPOKEN IN HOME
-# JB055   NEW MARRIAGE SINCE PREVIOUS WAVE
-# JB056   BETWEEN WAVE MARRIAGE START-YEAR
-# JB057   BETWEEN WAVE MARRIAGE START-YEAR
-# JB058   DIVORCE/WIDOW SINCE PREVIOUS WAVE
-# JB059   BETWEEN WAVE DIVORCE/WIDOW-MONTH
-# JB060   BETWEEN WAVE DIVORCE/WINDOW-YEAR
-# JB061   MARITAL STATUS IF UNMARRIED
-# JB065   NUMBER OF MARRIAGES
-# JB066_1 FIRST MARRIAGE YEAR BEGAN
-# JB067_1 FIRST MARRIAGE MONTH BEGAN
-#JB068_1 FIRST MARRIAGE END DIVORCE/WIDOW
-# JB070_1 FIRST MARRIAGE-YEARS MARRIAGE
-# JB066_2 SECOND MARRIAGE YEAR BEGAN
-# JB067_2 SECOND MARRIAGE MONTH BEGAN
-# JB068_2 SECOND MARRIAGE END DIVORCE/WIDOW
-# JB070_2 SECOND MARRIAGE-YEARS MARRIAGE
-# JB066_3 THIRD MARRIAGE YEAR BEGAN
-# JB067_3 THIRD MARRIAGE MONTH BEGAN
-# JB068_3 THIRD MARRIAGE END DIVORCE/WIDOW
-# JB070_3 THIRD MARRIAGE-YEARS MARRIAGE
-# JB066_4 MARRIAGE YEAR BEGAN -4
-# JB067_4 MARRIAGE MONTH BEGAN -4
-# JB068_4 MARRIAGE END DIVORCE/WIDOW -4
-# JB070_4 MARRIAGE-YEARS MARRIED -4
-# JB063 MARITAL STATUS ASSIGNED
-# JA500    DATE OF INTERVIEW - MONTH
+# HHIDPN   HHIDPN     Household ID = Person Number: Numeric
+# BIRTHMO  BIRTHMO    Birthdate: Month
+# BIRTHYR  BIRTHYR    Birthdate: Year
+# BIRTHYF  BIRTHYF    Flags cases with birth year 0=No difference, 1-Difference, used tracker 2=difference used other
+# JX060_R  Gender     Gender
+# JB014A   yrsed      YRSEDUC  HIGHEST LEVEL OF EDUCATION VARIABLE COMBINED FROM ALL WAVES
+# JB017M   Degree     Highest degree
+# JZ023    Cohort     Cohort
+# JB028A   Hispanic   R Hispanic/Latino yes/no response
+# JB031A   RACE       MASKED - COMBINED -- Race
+# JB054--englishH--   ENGLISH USUALLY SPOKEN IN HOME
+# JA019 -- Age--      R CURRENT AGE CALCULATION
+# JA009 -- Proxy --   PROXY/SELF INTERVIEW
+# JPN_SP --Spousenum--SPOUSE/PARTNER PERSON NUMBER
+# JB055 --newmarriage--  NEW MARRIAGE SINCE PREVIOUS WAVE
+# JB056 --newmarriagmth--  BETWEEN WAVE MARRIAGE START-Month
+# JB057 --newmarriagyr--  BETWEEN WAVE MARRIAGE START-YEAR
+# JB058 --divwid--  DIVORCE/WIDOW SINCE PREVIOUS WAVE
+# JB059 --divwidmth -- BETWEEN WAVE DIVORCE/WIDOW-MONTH
+# JB060 --divwidyr--  BETWEEN WAVE DIVORCE/WINDOW-YEAR
+# JB065 --nummarriages--  NUMBER OF MARRIAGES
+# JB066_1 --marriage1yr -- FIRST MARRIAGE YEAR BEGAN
+# JB067_1 -- marriage1mth -- FIRST MARRIAGE MONTH BEGAN
+# JB068_1 -- divwid1-- FIRST MARRIAGE END DIVORCE/WIDOW
+# JB070_1 -- marriage1lgth -- FIRST MARRIAGE-YEARS MARRIAGE
+# JB066_2 -- marriage2yr -- SECOND MARRIAGE YEAR BEGAN
+# JB067_2 -- marriage2mth -- SECOND MARRIAGE MONTH BEGAN
+# JB068_2 -- divwid2-- SECOND MARRIAGE END DIVORCE/WIDOW
+# JB070_2 -- marriage2lgth -- SECOND MARRIAGE-YEARS MARRIAGE
+# JB066_3 -- marriage3yr -- THIRD MARRIAGE YEAR BEGAN
+# JB067_3 -- marriage2mth -- THIRD MARRIAGE MONTH BEGAN
+# JB068_3 -- divwid3 -- THIRD MARRIAGE END DIVORCE/WIDOW
+# JB070_3 -- marriage3lgth -- THIRD MARRIAGE-YEARS MARRIAGE
+# JB066_4 -- marriage4yr -- MARRIAGE YEAR BEGAN -4
+# JB067_4 -- marriage4mth -- MARRIAGE MONTH BEGAN -4
+# JB068_4 -- divwid4 -- MARRIAGE END DIVORCE/WIDOW -4
+# JB070_4 -- marriage4lgth -- MARRIAGE-YEARS MARRIED -4
+# JB033 -- childev -- NUMBER CHILDREN EVER
+# JB034 --childliv -- NUMBER OF CHILDREN LIVING
+# JB050 -- religion-- RELIGIOUS PREFERENCE
+# JB082 -- attend-- HOW OFTEN ATTEND RELIGIOUS SERV
+# JB053 -- importanceR -- IMPORTANCE OF RELIGION
+# JB045 -- LivArea -- Number of years living in area
+
+# JIVIEWMO -- IvIEWMO -- Beginning of Interview: Month
+# JIVIEWYR -- IVIEWYR -- Beginning of Interview: Year
+# JNHM     -- NHM -- Respondent in nursing home derived from core data
+# JNURSHM  -- NURSHMT -- Respondent in nursing home from Tracker
+# JCOUPLE  -- coupleh -- Wave household - couple
+# JPROXY  -- PROXY-- Proxy flag
+
 #HOUSEHOLD INFORMATION SECTION A COVERSCREEN VARIABLES
-#JA022 VERIFY PREV WAVE SP IS NOW PARTNER
-# JA023 PREVIOUS WAVE SP/P ALIVE
-# JA024 MO COUPLE STOP LIVING TOGETHER/DIE
-# JA025 YEAR COUPLE STOPPED LIVE TOGETHER/DIE
-# JA026 R MARRIED
-# JA027 LIVING W/P
-# JA030 COUPLE LIVE TOGETHER
-# JA031 MO R AND SP/P STOP LIVING IN SAME HH
-# JA032 YR R AND SP/P STOP LIVING IN SAME HH
-# JA033 SP/P IN NURSHOME
-# JA034 MARRIED OR SEPARATED
+# JA020 -- SAMESP/P -- 1ST R SAME SP/P
+# JA022 -- VSPNOWPART -- VERIFY PREV WAVE SP IS NOW PARTNER
+# JA023 -- SPALIVE -- PREVIOUS WAVE SP/P ALIVE
+# JA024 -- MLIVEAP -- MO COUPLE STOP LIVING TOGETHER/DIE
+# JA025 -- YLIVEAP -- YEAR COUPLE STOPPED LIVE TOGETHER/DIE
+# JA027 -- LIVEW/P -- LIVING WITH PARTNER AS IF MARRIED
+# JA030 -- LIVETOG -- COUPLE LIVE TOGETHER
+# JA031 -- STOPLIVTM -- MO R AND SP/P STOP LIVING IN SAME HH
+# JA032 -- STOPLIVTY-- YR R AND SP/P STOP LIVING IN SAME HH
+# JA033 --SPNURSHOM-- SP/P IN NURSHOME
+# JA034 --  MARRIED OR SEPARATED
 # JA035 SEPARATED/PARTNERED
 # JA036 MO STARTED LIVING WITH NEW SP/P
 # JA037 YEAR STARTED LIVING WITH NEW SP/P
