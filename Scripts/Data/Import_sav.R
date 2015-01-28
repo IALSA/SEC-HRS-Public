@@ -44,9 +44,20 @@ ds04 <- readRDS(pathFile4RDS)
 require(dplyr)
 
 # THis is how to select with dplyr package 
-# ds <- ds01 %>%
-#   dplyr::select(HHIDPN, DEGREE, GENDER, RACE, BIRTHMO, BIRTHYR)
-# head(ds, 12)
+ds <- ds01 %>%
+  dplyr::select(HHIDPN, PN, DEGREE, GENDER, RACE, BIRTHMO, BIRTHYR, JB082)
+head(ds, 12)
+
+# Alternatively, and preferably in this cases
+# varPick <- c("HHIDPN", "DEGREE", "GENDER", "RACE", "BIRTHMO", "BIRTHYR", "JB082", "JZ023")
+ds1 <- ds01[1:100,varPick]
+
+
+# varPick <- c("HHIDPN", "DEGREE", "GENDER", "RACE", "BIRTHMO", "BIRTHYR", "JB082", "JZ023")
+ds2 <- ds02[1:100,varPick]
+ds3 <- ds03[1:100,varPick]
+ds4 <- ds04[1:100,varPick]
+
 
 # This is how to select with base package 
 
