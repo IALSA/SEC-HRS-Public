@@ -22,23 +22,27 @@ require(foreign)
 # saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
 ds04full <- readRDS(pathFile1RDS)
 
+names1 <- names(ds04full[1:3,])
+length(names1)
+write.csv(x=names1,file= file.path(pathFolder,"names1.csv"))
+
 #Next three lines are run the first time on machine
 #ds0_2 <- read.spss(file=pathFile2, use.value.labels=TRUE)
 #ds0_2 <- data.frame(ds0_2)
 #saveRDS(object = ds0_2, file=pathFile2RDS, compress="xz")
-ds06full <- readRDS(pathFile2RDS)
+#ds06full <- readRDS(pathFile2RDS)
 
 #Next three lines are run the first time on machine
 #ds0_3 <- read.spss(file=pathFile3, use.value.labels=TRUE)
 #ds0_3 <- data.frame(ds0_3)
 #saveRDS(object = ds0_3, file=pathFile3RDS, compress="xz")
-ds08full <- readRDS(pathFile3RDS)
+#ds08full <- readRDS(pathFile3RDS)
 
 #Next three lines are run the first time on machine
 #ds0_4 <- read.spss(file=pathFile4, use.value.labels=TRUE)
 #ds0_4 <- data.frame(ds0_4)
 #saveRDS(object = ds0_4, file=pathFile4RDS, compress="xz")
-ds10full <- readRDS(pathFile4RDS)
+#ds10full <- readRDS(pathFile4RDS)
 
 
 require(dplyr)
@@ -65,7 +69,8 @@ ds04 <- ds04full %>%
                   marriage2lgth=JB070_2, marriage3yr=JB066_3, marriage3mth=JB067_3,
                   divwid3=JB068_3, marriage3lgth=JB070_4, marriage4yr=JB066_4, marriage4mth=JB067_4,
                   divwid4=JB068_4, marriage4lgth=JB070_4, religion=JB050, attendR=JB082, importanceR=JB053, assistdem=JB076,  
-                  version=JVDATE, )
+                  version=JVDATE, SAMESP/P=JA020, verifysp=JA022, SPalive=JA023, stplivtogethM=JA024, stplivtogethyr=JA025
+                  livingW/P=JA027,newSPmth=JA036, newSPyr=JA037, newsp=JA045)
 head(ds04, 12)
 
 ds06 <- ds06full %>%
