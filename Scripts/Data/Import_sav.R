@@ -22,6 +22,9 @@ require(foreign)
 # saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
 ds04full <- readRDS(pathFile1RDS)
 
+
+
+
 names1 <- names(ds04full[1:3,])
 length(names1)
 write.csv(x=names1,file= file.path(pathFolder,"names1.csv"))
