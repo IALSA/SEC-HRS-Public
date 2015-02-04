@@ -44,3 +44,4 @@ Temporary Items
 
 # Large data files 
 Data/Extract/RAND_vA/spss/*
+.RData
