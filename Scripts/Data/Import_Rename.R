@@ -1,4 +1,11 @@
- # Importing raw RAND files version A.
+
+# remove all elements for a clean start
+rm(list=ls(all=TRUE))
+cat("\014")
+
+require(plyr)
+
+# Importing raw RAND files version A.
 pathDir <- getwd()
 pathFolder <- file.path(pathDir,"Data/Extract/RAND_vA")
 pathFolderSPSS <- file.path(pathFolder,"spss")
@@ -20,46 +27,19 @@ require(foreign)
 # ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)
 # ds0_1 <- data.frame(ds0_1)
 # saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
+
+
+
+# rename variables for 2004 wave subset
 ds04full <- readRDS(pathFile1RDS)
-ds4 <- ds04full[1:100,]
+ds04 <- ds04full[1:100,]
+source("./Scripts/Data/rename2004.R")
+ds04 <- ds04[,keepvars04]
 
 
-
-require(plyr)
-
-ds <- plyr::rename(ds4, 
-                   
-                   replace = c("HHIDPN"="id",
-                   "BIRTHYF"="BIRTHYFDis",
-                   "BIRTHYD"="BIRTHYDis",
-                   "JCSR01"="CSR04",
-                   "JN_INHH"="RHHold",
-                   "JANYFINR"="FinRespHH",
-                   "JFIN_RHP"="FinRespID",
-                   "JFINR01"="FinResp04",
-                   "JNOFINR"="NoFinData",
-                   "JANYFAMR"="FamResp",
-                   "JFAM_RHP"="FamRespID",
-                   "JFAMR01"="FamResp04",
-                   "JNOFAMR"="NoFamData",
-                   "BIRTHMO"="birthM",
-                   "BIRTHYR"="birthY",
-                   "DEGREE"="degree",
-                   "FIRSTIW"="Firstiyr",
-                   "GENDER"="female",
-                   "HISPANIC"="Hispanic",
-                   "IMMGYEAR"="Immgyear",
-                   "OVHHIDC"="OldHRSPN",
-                   "OVPNC"="OldHRSPN",
-                   "OVRESULT"="OverlapCas",
-                   "RACE"="race",
-                   "SCHLYRS"="eduyears",
-                   "SECU"="sampleerr",
-                   "STRATUM"="stratumid",
-                   "STUDY"="study",
-                   "USBORN"="usborn",
-                   "WTCOHORT"="wbirthcohort",
-                   "JCORES"="Coresstatus"))
-
-
+# rename variables for 2006 wave subset
+ds06full <- readRDS(pathFile2RDS)
+ds06 <- ds06full[1:100,]
+source("./Scripts/Data/rename2006.R")
+ds06 <- ds06[,keepvars06]
 
