@@ -3,7 +3,6 @@
 rm(list=ls(all=TRUE))
 cat("\014")
 
-require(plyr)
 
 # Importing raw RAND files version A.
 pathDir <- getwd()
@@ -30,9 +29,10 @@ require(foreign)
  #ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)
  #ds0_1 <- data.frame(ds0_1)
  #saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
+ds04full <- readRDS(pathFile1RDS)
+ds06full <- readRDS(pathFile2RDS)
 
-
-
+require(dplyr)
 # rename variables for 2004 wave subset
 ds04full <- readRDS(pathFile1RDS)
 ds04 <- ds04full[1:100,]

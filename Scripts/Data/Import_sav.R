@@ -1,5 +1,5 @@
  # Importing raw RAND files version A.
-install.packages("dplyr")
+
 
 pathDir <- getwd()
 pathFolder <- file.path(pathDir,"Data/Extract/RAND_vA")
@@ -30,9 +30,9 @@ ds04full <- readRDS(pathFile1RDS)
 
 
 
-names1 <- names(ds04full[1:3,])
-length(names1)
-write.csv(x=names1,file= file.path(pathFolder,"names1.csv"))
+#names1 <- names(ds04full[1:3,])
+#length(names1)
+#write.csv(x=names1,file= file.path(pathFolder,"names1.csv"))
 
 #Next three lines are run the first time on machine
 #ds0_2 <- read.spss(file=pathFile2, use.value.labels=TRUE)
@@ -52,6 +52,11 @@ write.csv(x=names1,file= file.path(pathFolder,"names1.csv"))
 #saveRDS(object = ds0_4, file=pathFile4RDS, compress="xz")
 #ds10full <- readRDS(pathFile4RDS)
 
+#Next three lines are run the first time on machine
+ds0_5 <- read.spss(file=pathFile5, use.value.labels=TRUE)
+ds0_5 <- data.frame(ds0_5)
+saveRDS(object = ds0_5, file=pathFile5RDS, compress="xz")
+ds12full <- readRDS(pathFile5RDS)
 
 require(dplyr)
 
