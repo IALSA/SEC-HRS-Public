@@ -1,4 +1,6 @@
  # Importing raw RAND files version A.
+install.packages("dplyr")
+
 pathDir <- getwd()
 pathFolder <- file.path(pathDir,"Data/Extract/RAND_vA")
 pathFolderSPSS <- file.path(pathFolder,"spss")
@@ -14,6 +16,9 @@ pathFile3RDS <- file.path(pathFolder, "h08f2a.Rds")
 
 pathFile4 <- file.path(pathFolderSPSS, "h10f4a.sav")
 pathFile4RDS <- file.path(pathFolder, "h10f4a.Rds")
+
+pathFile5 <- file.path(pathFolderSPSS, "h12e1a.sav")
+pathFile5RDS <- file.path(pathFolder, "h12e1a.Rds")
 
 require(foreign)
 # Next three lines are run the first time on machine
