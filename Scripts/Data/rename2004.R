@@ -1,10 +1,10 @@
 # rename and select vars for 2004
 
-require (dplyr)
-ds04 <- dplyr::rename(ds04, 
+require (plyr)
+ds04 <- plyr::rename(ds04, 
                       
-replace = c(
-  "JA500"="intMonth_2004",
+  replace = c(
+  "JA500"="intMonth_2004"
   "JA501"="intYr_2004",
   "JA002"="agreeInt_2004",
   "JA009"="proxy_2004",
@@ -586,39 +586,6 @@ keepvars04 <- c(
   "headache_2004",
   "fatigue_2004",
   "cough_2004",
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
   
   
   "HHIDC_R_2004",
