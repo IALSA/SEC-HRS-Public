@@ -2,9 +2,7 @@
 # remove all elements for a clean start
 rm(list=ls(all=TRUE))
 cat("\014")
-install.packages ("plyr")
 library(foreign)
-
 library(plyr)
 library(dplyr)
 # Importing raw RAND files version A.

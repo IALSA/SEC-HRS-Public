@@ -323,7 +323,7 @@ ds06 <- plyr::rename(ds06, replace = c(
   "KD556"="leftalone_2006",
   "KD557"="hallucinate_2006"
   
-)
+))
 
 keepvars06 <- c(
   
