@@ -1,8 +1,8 @@
 # rename and select vars for 2004
 
-
-ds04 <- plyr::rename(ds04, 
-                    
+require (dplyr)
+ds04 <- dplyr::rename(ds04, 
+                      
 replace = c(
   "JA500"="intMonth_2004",
   "JA501"="intYr_2004",

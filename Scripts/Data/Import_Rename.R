@@ -2,8 +2,11 @@
 # remove all elements for a clean start
 rm(list=ls(all=TRUE))
 cat("\014")
+install.packages ("plyr")
+library(foreign)
 
-
+library(plyr)
+library(dplyr)
 # Importing raw RAND files version A.
 pathDir <- getwd()
 pathFolder <- file.path(pathDir,"Data/Extract/RAND_vA")
@@ -31,6 +34,9 @@ require(foreign)
  #saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
 ds04full <- readRDS(pathFile1RDS)
 ds06full <- readRDS(pathFile2RDS)
+ds08full <- readRDS(pathFile3RDS)
+ds10full <- readRDS(pathFile4RDS)
+ds12full <- readRDS(pathFile5RDS)
 
 require(dplyr)
 # rename variables for 2004 wave subset

@@ -1,6 +1,7 @@
  # Importing raw RAND files version A.
 
-
+library(foreign)
+library(dplyr)
 pathDir <- getwd()
 pathFolder <- file.path(pathDir,"Data/Extract/RAND_vA")
 pathFolderSPSS <- file.path(pathFolder,"spss")
@@ -22,9 +23,9 @@ pathFile5RDS <- file.path(pathFolder, "h12e1a.Rds")
 
 require(foreign)
 # Next three lines are run the first time on machine
-# ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)
-# ds0_1 <- data.frame(ds0_1)
-# saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
+ #ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)
+ #ds0_1 <- data.frame(ds0_1)
+ #saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
 ds04full <- readRDS(pathFile1RDS)
 
 
