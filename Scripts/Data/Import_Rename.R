@@ -30,11 +30,7 @@ require(foreign)
  #ds0_1 <- read.spss(file = pathFile1, use.value.labels=TRUE)
  #ds0_1 <- data.frame(ds0_1)
  #saveRDS(object = ds0_1, file=pathFile1RDS, compress="xz")
-#ds04full <- readRDS(pathFile1RDS)
-#ds06full <- readRDS(pathFile2RDS)
-#ds08full <- readRDS(pathFile3RDS)
-#ds10full <- readRDS(pathFile4RDS)
-#ds12full <- readRDS(pathFile5RDS)
+
 
 require(dplyr)
 
@@ -51,3 +47,9 @@ ds06 <- ds06full[1:100,]
 source("./Scripts/Data/rename2006.R")
 ds06 <- ds06[,keepvars06]
 
+
+# rename variables for 2008 wave subset
+ds08full <- readRDS(pathFile3RDS)
+ds08 <- ds08full[1:100,]
+source("./Scripts/Data/rename2008.R")
+ds08 <- ds08[,keepvars08]
