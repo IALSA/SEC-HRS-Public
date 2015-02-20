@@ -1,7 +1,7 @@
 # rename and select vars for 2008
 
 
-ds08 <- plyr::rename(ds08, replace = c(  	
+ds10 <- plyr::rename(ds10, replace = c(  	
   "hhidpn"="id_2008",
   "birthyf"="BIRTHYFDis_2008",
   "birthyd"="BIRTHYDis_2008",
