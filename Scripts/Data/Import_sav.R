@@ -48,10 +48,10 @@ ds04full <- readRDS(pathFile1RDS)
 #ds08full <- readRDS(pathFile3RDS)
 
 #Next three lines are run the first time on machine
-#ds0_4 <- read.spss(file=pathFile4, use.value.labels=TRUE)
-#ds0_4 <- data.frame(ds0_4)
-#saveRDS(object = ds0_4, file=pathFile4RDS, compress="xz")
-#ds10full <- readRDS(pathFile4RDS)
+ds0_4 <- read.spss(file=pathFile4, use.value.labels=TRUE)
+ds0_4 <- data.frame(ds0_4)
+saveRDS(object = ds0_4, file=pathFile4RDS, compress="xz")
+ds10full <- readRDS(pathFile4RDS)
 
 #Next three lines are run the first time on machine
 ds0_5 <- read.spss(file=pathFile5, use.value.labels=TRUE)

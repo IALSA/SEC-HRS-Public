@@ -158,7 +158,7 @@ ds10 <- plyr::rename(ds10, replace = c(
   "mc066"="psychworse_2010",
   "mc067"="psychtreat_2010",
   "mc068"="psychmeds_2010",
-  "mc069"="memorydis_2010",
+  
   "mc070"="arthritis_2010",
   "mc071"="athritworse_2010",
   "mc074"="arthmed_2010",
@@ -264,8 +264,8 @@ ds10 <- plyr::rename(ds10, replace = c(
   "md182m8"="wordIR8_2010",
   "md182m9"="wordIR9_2010",
   "md182m10"="wordIR10_2010",
-  "md"="wordIR11_2010",
-  "md"="wordIR12_2010",
+  
+  
   "md174"="wrdsImgood_2010",
   "md175"="wrdsIwrong_2010",
   "md176"="wordIforg_2010",
@@ -328,7 +328,7 @@ ds10 <- plyr::rename(ds10, replace = c(
   "md157"="president_2010",
   "md158"="vicepres_2010",
   "md170"="TICScount_2010",
-  "md170a"="TICScount65_2010",
+  
   "md159"="vocabgiven_2010",
   "md161"="vocab1_2010",
   "md163"="vocab2_2010",
@@ -436,7 +436,7 @@ ds10 <- plyr::rename(ds10, replace = c(
   "mi813m2"="I813M2_2010",
   "mi813m3"="I813M3_2010",
   "mi813m4"="I813M4_2010",
-  "mi"="I813M5_2010",
+  
   "mi815"="domhand_2010",
   "mi816"="gripLH1_2010",
   "mi851"="gripRH1_2010",
@@ -547,10 +547,10 @@ ds10 <- plyr::rename(ds10, replace = c(
   "mi943m3"="I943M3_2010",
   "mi943m4"="I943M4_2010",
   "mi943m5"="I943M5_2010",
-  "mi943m6"="I943M6_2010",
+  
   "mi923"="blood_2010",
   "mi924m1"="I924M1_2010",
-  "mi924m2"="I924M2_2010"
+  "mi924m2"="I924M2_2010" 
   
 ))
 
@@ -565,8 +565,13 @@ keepvars10 <- c(
   "female_2010",
   "Hispanic_2010",
   "Immgyear_2010",
+  
+  
+  
   "race_2010",
   "eduyears_2010",
+  
+  
   "study_2010",
   "usborn_2010",
   "wbirthcohort_2010",
@@ -632,6 +637,23 @@ keepvars10 <- c(
   "divwidmth_2010",
   "divwidyr_2010",
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "maritalstat_2010",
   
   "rhealth_2010",
@@ -689,7 +711,7 @@ keepvars10 <- c(
   "psychworse_2010",
   "psychtreat_2010",
   "psychmeds_2010",
-  "memorydis_2010",
+  
   "arthritis_2010",
   "athritworse_2010",
   "arthmed_2010",
@@ -795,8 +817,8 @@ keepvars10 <- c(
   "wordIR8_2010",
   "wordIR9_2010",
   "wordIR10_2010",
-  "wordIR11_2010",
-  "wordIR12_2010",
+  
+  
   "wrdsImgood_2010",
   "wrdsIwrong_2010",
   "wordIforg_2010",
@@ -859,7 +881,7 @@ keepvars10 <- c(
   "president_2010",
   "vicepres_2010",
   "TICScount_2010",
-  "TICScount65_2010",
+  
   "vocabgiven_2010",
   "vocab1_2010",
   "vocab2_2010",
@@ -1000,14 +1022,21 @@ keepvars10 <- c(
   "I889_2010",
   "balSBScompli_2010",
   "tandcomp_2010",
-
+  
+  
+  
+  
+  
   "tandfulltime_2010",
   "tandtime_2010",
   "tandcompens_2010",
   "I899_2010",
   "tandcompli_2010",
   "walk_2010",
-
+  
+  
+  
+  
   
   "walktime1_2010",
   "walktime2_2010",
@@ -1015,13 +1044,63 @@ keepvars10 <- c(
   "walksurf_2010",
   "walkaid_2010",
   "walkeffort_2010",
- 
+  
+  
+  
+  
+  
+  
   "height_2010",
-
+  
+  
+  
+  
+  
+  
+  
+  
+  
   
   "weight_2010",
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "waist_2010",
   
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
   "blood_2010"
-
+  
 )    
