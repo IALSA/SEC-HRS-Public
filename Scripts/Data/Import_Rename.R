@@ -54,3 +54,8 @@ ds08 <- ds08full[1:100,]
 source("./Scripts/Data/rename2008.R")
 ds08 <- ds08[,keepvars08]
 
+# rename variables for 2008 wave subset
+ds10full <- readRDS(pathFile4RDS)
+ds10 <- ds10full[1:100,]
+source("./Scripts/Data/rename2010.R")
+ds10 <- ds10[,keepvars10]
